@@ -2,6 +2,7 @@
 
 import pytest
 from cctrusted_vm import CCTrustedVmSdk
+from tests.inc.platform import PlatformCheck
 
 class TestCCTrustedVmSdk():
     """Unit tests for CCTrustedVmSdk class."""
@@ -10,11 +11,13 @@ class TestCCTrustedVmSdk():
         """Test get_default_algorithms() function."""
         algo = CCTrustedVmSdk.inst().get_default_algorithms()
         assert algo is not None
+        PlatformCheck.inst().check_default_algorithms()
 
     def test_get_measurement_count(self):
         """Test get_measurement_count() function."""
         count = CCTrustedVmSdk.inst().get_measurement_count()
         assert count is not None
+        PlatformCheck.inst().check_measurement_count()
 
     def test_get_measurement_with_invalid_input(self):
         """Test get_measurement() function with invalid input."""
